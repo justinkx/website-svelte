@@ -1,30 +1,29 @@
 <script>
-	export let name;
+  import Home from "./pages/home/Home.svelte";
+  import router, { curRoute } from "./router/router.js";
+  import RouterLink from "./router/RouterLink.svelte";
+  import { onMount } from "svelte";
+  onMount(() => {
+     console.log(window.location.pathname,'path')
+    curRoute.set(window.location.pathname);
+    if (!history.state) {
+      window.history.replaceState(
+        { path: window.location.pathname },
+        "",
+        window.location.href
+      );
+    }
+  });
+  function handlerBackNavigation(event) {
+    curRoute.set(event.state.path);
+  }
 </script>
 
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> learn how to build Svelte apps.</p>
-</main>
-
 <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
 
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
 </style>
+
+<main>
+  <svelte:component this={router[$curRoute]} />
+
+</main>
