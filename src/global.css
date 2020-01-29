@@ -86,7 +86,7 @@ button:focus {
     --secondary-contrast-rgb: 255, 255, 255;
     --secondary-shade: #0bb8cc;
     --secondary-tint: #24d6ea;
-    --tertiary: #7044ff;
+    --tertiary: #425389;
     --tertiary-rgb: 112, 68, 255;
     --tertiary-contrast: #ffffff;
     --tertiary-contrast-rgb: 255, 255, 255;
@@ -124,4 +124,26 @@ button:focus {
     --medium-tint: #a2a4ab;
     --light: #ffffff;
     --light-rgb: 244, 244, 244;
+    --resume: #334681;
+}
+.fullHeight {
+    height: 100%;
+}
+.left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.sans {
+    font-family: sans-serif;
+}
+.textCenter {
+    text-align: center;
+}
+.tertiary {
+    color: var(--tertiary);
+}
+.column {
+    display: flex;
+    flex-direction: column;
 }

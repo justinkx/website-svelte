@@ -23,7 +23,7 @@
 
 </style>
 
-<main>
+<main class="fullHeight">
   <svelte:component this={router[$curRoute]} />
 
 </main>

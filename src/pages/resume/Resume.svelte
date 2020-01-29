@@ -1,19 +1,36 @@
 <script>
-
+  import LeftContent from "./LeftContent.svelte";
+  import RightContent from "./RightContent.svelte";
 </script>
 
 <style>
   .headerContainer {
-    height: 250px;
     display: flex;
-    padding: 0px 50px;
-    flex-direction: row;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
+    padding: 20px 40px;
   }
-  
+
+  @media screen and (min-width: 400px) {
+    .headerContainer {
+      flex-direction: row;
+    }
+    .right {
+      margin-left: 30px;
+    }
+  }
+  @media screen and (min-width: 550px) {
+    .right {
+      margin-left: 60px;
+    }
+  }
 </style>
 
 <div class="headerContainer">
-  <h2>Resume</h2>
+
+  <LeftContent />
+  <div class="right">
+    <RightContent />
+  </div>
 </div>
