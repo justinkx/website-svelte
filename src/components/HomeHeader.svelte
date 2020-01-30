@@ -29,7 +29,7 @@
     font-size: 18px;
     padding-bottom: 6px;
   }
-  @media screen and (min-width: 400px) {
+  @media screen and (min-width: 550px) {
     .user {
     width: 160px;
     right: 80px;

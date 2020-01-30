@@ -1,3 +1,8 @@
+<script>
+  import Badge from "../../components/Badge.svelte";
+  import Languages from "../../components/Languages.svelte";
+</script>
+
 <style>
   .avatar {
     width: 60px;
@@ -26,10 +31,11 @@
   }
   .dResume {
     background-color: var(--primary);
-    border-radius: 4px;
+    border-radius: 6px;
+    padding: 2px 8px;
     color: white;
-    font-size: 14px;
-    height: 40px;
+    font-size: 13px;
+    height: 35px;
   }
   .name {
     font-size: 20px;
@@ -44,7 +50,20 @@
   span {
     color: var(--resume);
   }
-  @media screen and (min-width: 400px) {
+  .skillsContainer {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    display: none;
+  }
+  .title {
+    display: none;
+  }
+   .showLang {
+      display: none;
+    }
+  @media screen and (min-width: 550px) {
     .avatar {
       width: 100px;
       margin-top: 30px;
@@ -59,6 +78,18 @@
     }
     .addressContainer {
       margin-left: 0px;
+    }
+    .skillsContainer {
+      display: flex;
+    }
+    .title {
+      display: flex;
+    }
+    .showLang {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      width: 100%;
     }
   }
 </style>
@@ -96,8 +127,30 @@
       <a target="_blank" href="https://github.com/justinkx">github</a>
     </p>
   </div>
-  <a  target="_blank" href="http://www.africau.edu/images/default/sample.pdf" download="resume">
+  <a
+    target="_blank"
+    href="http://www.africau.edu/images/default/sample.pdf"
+    download="resume">
     <button type="submit" class="dResume">Download Resume</button>
   </a>
+  <h2 class="title">Skills</h2>
+  <div class="skillsContainer">
+    <Badge color="#633ce0" title="javascript" />
+    <Badge color="#633ce0" title="HTML,CSS" />
+    <Badge color="#633ce0" title="Typescript" />
+    <Badge color="#633ce0" title="Nodejs" />
+    <Badge color="#633ce0" title="Ionic Framework" />
+    <Badge color="#633ce0" title="React-Native" />
+    <Badge color="#633ce0" title="Redux" />
+    <Badge color="#633ce0" title="Angular" />
 
+  </div>
+  <span class="showLang">
+    <h2 class="title">Languages</h2>
+    <Languages lang={{ name: 'English', rating: 5 }} />
+    <Languages lang={{ name: 'Malayalam', rating: 5 }} />
+    <Languages lang={{ name: 'Tamil', rating: 2 }} />
+    <Languages lang={{ name: 'Hindi', rating: 2 }} />
+
+  </span>
 </div>

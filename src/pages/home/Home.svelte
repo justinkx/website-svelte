@@ -20,7 +20,7 @@
     align-items: center;
     margin-left: 15%;
   }
-  @media screen and (min-width: 400px) {
+  @media screen and (min-width: 550px) {
     .headerContainer {
       height: 300px;
       margin-left: 20%;

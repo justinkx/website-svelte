@@ -1,5 +1,9 @@
 <script>
   import Badge from "../../components/Badge.svelte";
+  import EducationalInstitute from "../../components/EducationalInstitute.svelte";
+  import PersonalProjects from "../../components/PersonalProjects.svelte";
+  import Languages from "../../components/Languages.svelte";
+
 </script>
 
 <style>
@@ -7,18 +11,7 @@
     color: var(--resume);
     font-size: 15px;
   }
-  .title {
-    font-weight: bold;
-    font-size: 20px;
-    margin: 20px 0px;
-    color: var(--primary-shade);
-  }
 
-  .courseBadge {
-    width: 30px;
-    height: 60px;
-    color: var(--secondary);
-  }
   .role {
     display: flex;
     justify-content: space-between;
@@ -60,16 +53,11 @@
     font-size: 15px;
     color: var(--resume);
   }
-  .marginLeft {
-    margin-left: 30px;
-  }
-  .course {
-    font-size: 16px;
+  .showLang {
     display: flex;
-    justify-content: flex-start;
-    margin-bottom: 10px;
+      flex-direction: column;
   }
-  @media screen and (min-width: 400px) {
+  @media screen and (min-width: 550px) {
     .title {
       margin: 30px 0px;
     }
@@ -77,14 +65,19 @@
       max-width: 70%;
     }
     .skillsContainer {
+      display: none;
+    }
+    .showSkills {
+      display: none;
+    }
+    .profileSummary {
       max-width: 80%;
     }
-  }
-  @media screen and (min-width: 400px) {
-    .skillsContainer {
-      max-width: 60%;
+    .showLang {
+     display: none;
     }
   }
+ 
 </style>
 
 <h2 class="title">Professional Summary</h2>
@@ -94,7 +87,7 @@
   Specializes in Angular, react, and react-native handled both web as well as
   hybrid mobile applications using ionic framework and react-native.
 </p>
-<h2 class="title">Skills</h2>
+<h2 class="title showSkills">Skills</h2>
 <div class="skillsContainer">
   <Badge color="#633ce0" title="javascript" />
   <Badge color="#633ce0" title="HTML,CSS" />
@@ -106,11 +99,16 @@
   <Badge color="#633ce0" title="Angular" />
 
 </div>
+<h2 class="title">Educational Qualifications</h2>
+<EducationalInstitute
+  eduDetails={{ course: 'B.Tech Electronics & Communication Engineering', college: 'College Of Engineering Kidangoor(CUSAT)', year: '06/2012 - 04/2016', place: 'Kottayam', subject: 'Electronics' }} />
+<EducationalInstitute
+  eduDetails={{ course: 'Higher Secondary Education', college: `St John The Baptist's HSSS`, year: '06/2010 - 04/2012', place: 'Kottayam', subject: 'Computer Science' }} />
 <h2 class="title">Work Experience</h2>
 <div class="prDiv">
   <h3 class="role tertiary">
     Systems Engineer
-    <Badge  title="full time" />
+    <Badge title="full time" />
   </h3>
   <p class="location">
     <ion-icon class="locIcon" name="ios-desktop" />
@@ -131,11 +129,18 @@
     </li>
   </ul>
 </div>
-<h2 class="title">Educational Qualifications</h2>
-<div class="column marginLeft">
-  <span class="courseBadge" />
-  <h3 class="course tertiary">
-    B.Tech Electronics & Communication Engineering
-  </h3>
-  <p>College Of Engineering Kidangoor(CUSAT)</p>
-</div>
+<h2 class="title">Personal Projects</h2>
+<PersonalProjects
+  project={{ name: 'WeSchool Mobile App(01/2018- 07/2018)', desc: ['Developed the official app for the Welingkar Educational Institution.', 'https://play.google.com/store/apps/details?id=com.weschool.project'] }} />
+<PersonalProjects
+  project={{ name: 'Champakarapally Mobile App', desc: ['Official App of the church using react-native,which features activity feeds, push notifications, image sharing backed by firebase.', 'https://play.google.com/store/apps/details?id=com.champakarapally.project&hl=en'] }} />
+<PersonalProjects
+  project={{ name: 'mytown Mobile App(10/2019- 01/2020)', desc: ['Salon and Hall booking app for town level services.'] }} />
+<span class="showLang">
+<h2 class="title">Languages</h2>
+<Languages lang={{name: 'English',rating: 5}}/>
+<Languages lang={{name: 'Malayalam',rating: 5}}/>
+<Languages lang={{name: 'Tamil',rating: 2}}/>
+<Languages lang={{name: 'Hindi',rating: 2}}/>
+
+</span>

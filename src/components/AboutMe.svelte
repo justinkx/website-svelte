@@ -42,7 +42,7 @@
   .description {
 
   }
-  @media screen and (min-width: 400px) {
+  @media screen and (min-width: 550px) {
     .aboutTitle {
       font-size: 24px;
     }
