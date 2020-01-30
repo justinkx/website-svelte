@@ -20,7 +20,7 @@ a {
 }
 
 a:hover {
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 a:visited {
@@ -30,8 +30,16 @@ a:visited {
 label {
 	display: block;
 }
-
-input, button, select, textarea {
+button {
+    border: none;
+    font-family: inherit;
+	font-size: inherit;
+	padding: 0.4em;
+	margin: 0 0 0.5em 0;
+	box-sizing: border-box;
+	border-radius: 2px;
+}
+input, select, textarea {
 	font-family: inherit;
 	font-size: inherit;
 	padding: 0.4em;
@@ -86,7 +94,7 @@ button:focus {
     --secondary-contrast-rgb: 255, 255, 255;
     --secondary-shade: #0bb8cc;
     --secondary-tint: #24d6ea;
-    --tertiary: #7044ff;
+    --tertiary: #425389;
     --tertiary-rgb: 112, 68, 255;
     --tertiary-contrast: #ffffff;
     --tertiary-contrast-rgb: 255, 255, 255;
@@ -124,4 +132,35 @@ button:focus {
     --medium-tint: #a2a4ab;
     --light: #ffffff;
     --light-rgb: 244, 244, 244;
+    --resume: #334681;
 }
+.fullHeight {
+    height: 100%;
+}
+.fullWidth {
+    width: 100%;
+}
+.left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.sans {
+    font-family: sans-serif;
+}
+.textCenter {
+    text-align: center;
+}
+.tertiary {
+    color: var(--tertiary);
+}
+.column {
+    display: flex;
+    flex-direction: column;
+}
+.title {
+    font-weight: bold;
+    font-size: 20px;
+    margin: 20px 0px;
+    color: var(--primary-shade);
+  }

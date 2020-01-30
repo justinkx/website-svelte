@@ -2,6 +2,10 @@
   .userTitle {
     width: 70%;
     height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
   .profilePic {
     width: 30%;
@@ -29,7 +33,7 @@
     font-size: 18px;
     padding-bottom: 6px;
   }
-  @media screen and (min-width: 400px) {
+  @media screen and (min-width: 550px) {
     .user {
     width: 160px;
     right: 80px;

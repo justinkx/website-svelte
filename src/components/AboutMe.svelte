@@ -1,5 +1,5 @@
 <script>
-
+import RouterLink from '../router/RouterLink.svelte';
 </script>
 
 <style>
@@ -11,13 +11,17 @@
     align-items: flex-start;
   }
   .user {
-    width: 120px;
-    height: 140px;
-    border-radius: 6px;
+    width: 100px;
+    height: 120px;
+    border-radius: 3px;
+    position: relative;
+    bottom: 8px;
+    left: 8px;
   }
   .imageContainer {
-    width: 120px;
-    height: 140px;
+    width: 100px;
+    height: 120px;
+    border: 4px solid var(--warning);
   }
   .textContainer {
     display: flex;
@@ -40,11 +44,40 @@
     width: 50px;
   }
   .description {
-
+    max-width: 90%;
+    font-size: 15px;
+    line-height: 20px;
+    padding-bottom: 20px;
   }
-  @media screen and (min-width: 400px) {
+  .resumeButton {
+    background-color: var(--primary);
+    border: none;
+    border-radius: 4px;
+    padding: 6px 8px;
+  }
+  .resume {
+    color: white;
+    font-size: 14px;
+  }
+  @media screen and (min-width: 550px) {
     .aboutTitle {
       font-size: 24px;
+    }
+    .user {
+      width: 120px;
+      height: 140px;
+      border-radius: 4px;
+      position: relative;
+      bottom: 8px;
+      left: 8px;
+    }
+    .imageContainer {
+      width: 120px;
+      height: 140px;
+      border: 4px solid var(--warning);
+    }
+    .description {
+      max-width: 80%;
     }
   }
 </style>
@@ -58,8 +91,21 @@
   </div>
   <div class="textContainer">
     <h2 class="aboutTitle">About Me</h2>
-    <p class="description" >
-      
+    <p class="description">
+      My name is Justin K Xavier. I'm a 26 years old Front End Developer based
+      in Chennai. I describe myself as a developer who loves coding, open
+      source, the web platform and hybrid mobile applications.. Currently I'm
+      working at a company called TCS, as a Front End Engineer.
     </p>
+    <p class="description">
+      In my spare time, I like to create and contribute to open source projects.
+      That helps me to learn a lots of new stuff, grow as a developer and
+      support other open source projects. I love travelling and discovering new
+      places.
+    </p>
+    <button class="resumeButton">
+      <RouterLink path="/resume" name="Resume" color="white"/>
+    </button>
+
   </div>
 </div>

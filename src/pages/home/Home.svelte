@@ -10,23 +10,23 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    margin-left: 15%;
+    margin-left: 8%;
+    margin-bottom: 40px;
   }
   .aboutMe {
-    height: 220px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    margin-left: 15%;
+    object-fit: cover;
+    margin-left: 8%;
   }
-  @media screen and (min-width: 400px) {
+  @media screen and (min-width: 550px) {
     .headerContainer {
       height: 300px;
       margin-left: 20%;
     }
     .aboutMe {
-      height: 280px;
       margin-left: 20%;
     }
   }
