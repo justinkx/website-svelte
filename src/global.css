@@ -20,7 +20,7 @@ a {
 }
 
 a:hover {
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 a:visited {
@@ -30,8 +30,16 @@ a:visited {
 label {
 	display: block;
 }
-
-input, button, select, textarea {
+button {
+    border: none;
+    font-family: inherit;
+	font-size: inherit;
+	padding: 0.4em;
+	margin: 0 0 0.5em 0;
+	box-sizing: border-box;
+	border-radius: 2px;
+}
+input, select, textarea {
 	font-family: inherit;
 	font-size: inherit;
 	padding: 0.4em;
@@ -128,6 +136,9 @@ button:focus {
 }
 .fullHeight {
     height: 100%;
+}
+.fullWidth {
+    width: 100%;
 }
 .left {
     display: flex;

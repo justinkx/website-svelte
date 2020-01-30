@@ -3,6 +3,7 @@
   import EducationalInstitute from "../../components/EducationalInstitute.svelte";
   import PersonalProjects from "../../components/PersonalProjects.svelte";
   import Languages from "../../components/Languages.svelte";
+	import { fade } from 'svelte/transition';
 
 </script>
 
@@ -58,6 +59,9 @@
       flex-direction: column;
   }
   @media screen and (min-width: 550px) {
+     .right {
+      margin-left: 30px;
+    }
     .title {
       margin: 30px 0px;
     }
@@ -79,7 +83,8 @@
   }
  
 </style>
-
+ <div class="right" transition:fade >
+  
 <h2 class="title">Professional Summary</h2>
 <p class="profileSummary">
   Versatile Front-end Developer with 3 years of experience designing,
@@ -144,3 +149,4 @@
 <Languages lang={{name: 'Hindi',rating: 2}}/>
 
 </span>
+</div>

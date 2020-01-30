@@ -2,6 +2,10 @@
   .userTitle {
     width: 70%;
     height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
   .profilePic {
     width: 30%;

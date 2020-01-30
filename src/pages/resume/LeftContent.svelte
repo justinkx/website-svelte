@@ -1,6 +1,11 @@
 <script>
+	import { fade } from 'svelte/transition';
+
   import Badge from "../../components/Badge.svelte";
   import Languages from "../../components/Languages.svelte";
+  
+
+
 </script>
 
 <style>
@@ -94,7 +99,7 @@
   }
 </style>
 
-<div class="left leftProfile">
+<div transition:fade class="left leftProfile">
   <img
     class="avatar"
     src="https://avatars2.githubusercontent.com/u/28846043?s=460&v=4"
@@ -133,7 +138,7 @@
     download="resume">
     <button type="submit" class="dResume">Download Resume</button>
   </a>
-  <h2 class="title">Skills</h2>
+  <h2 class="title fullWidth">Skills</h2>
   <div class="skillsContainer">
     <Badge color="#633ce0" title="javascript" />
     <Badge color="#633ce0" title="HTML,CSS" />
