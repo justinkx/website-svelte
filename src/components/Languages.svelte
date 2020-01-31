@@ -13,7 +13,7 @@
   }
 
   .language {
-    font-size: 14px;
+    font-size: 12px;
   }
   .dotContainer {
     display: flex;
@@ -26,7 +26,7 @@
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    border: 0.5px solid #633ce0;
+    border: 0.5px solid #4c8dff;
   }
   @media screen and (min-width: 550px) {
     .langWrapper {
@@ -41,7 +41,7 @@
     {#each [1, 2, 3, 4, 5] as dot, i}
       <div
         class="dot"
-        style="background: {i + 1 > parseInt(lang.rating) ? 'white' : '#633CE3'}" />
+        style="background: {i + 1 > parseInt(lang.rating) ? 'white' : '#4c8dff'}" />
     {/each}
   </div>
 

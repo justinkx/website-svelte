@@ -14,11 +14,12 @@
     max-height: 200px;
   }
   .user {
-    width: 100px;
+    width: 140px;
     position: relative;
-    right: 50px;
-    height: 120px;
-    top: 40px;
+    right: 65px;
+    height: 145px;
+    top: 55px;
+    object-fit: cover;
     border-radius: 6px;
   }
   .name {
@@ -35,10 +36,10 @@
   }
   @media screen and (min-width: 550px) {
     .user {
-    width: 160px;
-    right: 80px;
-    height: 180px;
-    top: 60px;
+    width: 250px;
+    right: 115px;
+    height: 265px;
+    top: 35px;
   }
   .profilePic {
         max-height: 300px;
@@ -64,5 +65,5 @@
   <div class="profilePic">
     <!-- <img class="user" src="" alt="justin" /> -->
 
-    <img class="user" src="https://avatars2.githubusercontent.com/u/28846043?s=460&v=4" alt="justin">
+    <img class="user" src="https://user-images.githubusercontent.com/28846043/73516465-791ef100-441e-11ea-99bf-d18a5d30fa5b.png" alt="justin">
   </div>

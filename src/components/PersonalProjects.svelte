@@ -17,9 +17,20 @@
   ul {
     padding-inline-start: 30px;
     margin-top: 10px;
+    list-style: none;
   }
   li {
       font-size: 15px;
+      color: black;
+  }
+   li::before {
+    content: "\2022";
+    color: var(--primary);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    font-size: 20px;
+    margin-left: -1em;
   }
 </style>
 

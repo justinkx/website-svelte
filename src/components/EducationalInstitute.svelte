@@ -14,19 +14,24 @@
     justify-content: flex-start;
     margin-bottom: 10px;
   }
+  .college {
+    font-size: 15px;
+    color: black;
+  }
   .courseBadge {
-    width: 20px;
-    height: 40px;
+    width: 7px;
+    height: 90%;
     position: absolute;
-    background-color: var(--primary-tint);
+    background-color: var(--primary);
     left: -37px;
-    top: 2px;
+    border-radius: 2px;
+    top: 0px;
   }
   .datePara {
     width: 100%;
     display: flex;
     padding-top: 5px;
-    color: var(--secondary-tint);
+    color: #005dff;
     font-family: sans-serif;
     font-size: 14px;
     justify-content: space-between;
@@ -43,7 +48,7 @@
 <div class="column marginLeft">
   <span class="courseBadge" />
   <h3 class="course tertiary">{eduDetails.course}</h3>
-  <p>{eduDetails.college}</p>
+  <p class="college">{eduDetails.college}</p>
   <p class="datePara">
     <span>{eduDetails.year}</span>
     <span>{eduDetails.place}</span>
