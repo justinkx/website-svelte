@@ -1,11 +1,24 @@
 <script>
-	import { fade } from 'svelte/transition';
+  import { fade } from "svelte/transition";
 
   import Badge from "../../components/Badge.svelte";
   import Languages from "../../components/Languages.svelte";
-  
 
-
+  function downloadResume() {
+    fetch("https://github.com/justinkx/website-svelte/files/4137923/resume.pdf")
+      .then(resp => resp.blob())
+      .then(blob => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.style.display = "none";
+        a.href = url;
+        a.download = "resume.pdf";
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+      })
+      .catch(() => alert("Unable to download.Try later!"));
+  }
 </script>
 
 <style>
@@ -65,9 +78,9 @@
   .title {
     display: none;
   }
-   .showLang {
-      display: none;
-    }
+  .showLang {
+    display: none;
+  }
   @media screen and (min-width: 550px) {
     .avatar {
       width: 100px;
@@ -132,12 +145,9 @@
       <a target="_blank" href="https://github.com/justinkx">github</a>
     </p>
   </div>
-  <a
-    target="_blank"
-    href="https://github.com/justinkx/website-svelte/files/4137923/resume.pdf"
-    download="resume">
-    <button type="submit" class="dResume">Download Resume</button>
-  </a>
+
+  <button on:click|once={downloadResume} class="dResume">Download Resume</button>
+
   <h2 class="title fullWidth">Skills</h2>
   <div class="skillsContainer">
     <Badge color="#633ce0" title="javascript" />
