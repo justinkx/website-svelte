@@ -15,7 +15,7 @@ p,h1,h2,h3,h4 {
 	margin: 0px;
 }
 a {
-	color: rgb(0,100,200);
+	color: var(--primary);
 	text-decoration: none;
 }
 
@@ -82,11 +82,11 @@ button:focus {
     max-width: 60%;
 }
 :root {
-	--primary: #3880ff;
+	--primary: #3b4d85;
     --primary-rgb: 56, 128, 255;
     --primary-contrast: #ffffff;
     --primary-contrast-rgb: 255, 255, 255;
-    --primary-shade: #3171e0;
+    --primary-shade: #394e8d;
     --primary-tint: #4c8dff;
     --secondary: #0cd1e8;
     --secondary-rgb: 12, 209, 232;

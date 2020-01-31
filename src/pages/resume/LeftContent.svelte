@@ -35,7 +35,7 @@
     padding-bottom: 25px;
   }
   .dResume {
-    background-color: var(--primary);
+    background-color: var(--primary-tint);
     border-radius: 6px;
     padding: 2px 8px;
     color: white;
@@ -134,7 +134,7 @@
   </div>
   <a
     target="_blank"
-    href="http://www.africau.edu/images/default/sample.pdf"
+    href="https://github.com/justinkx/website-svelte/files/4137923/resume.pdf"
     download="resume">
     <button type="submit" class="dResume">Download Resume</button>
   </a>
