@@ -5,6 +5,7 @@ import livereload from "rollup-plugin-livereload";
 import { terser } from "rollup-plugin-terser";
 import cleaner from "rollup-plugin-cleaner";
 import postcss from 'rollup-plugin-postcss';
+import url from '@rollup/plugin-url';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -21,6 +22,7 @@ export default {
       cleaner({
         targets: ["public/build"]
       }),
+      url(),
     svelte({
       // enable run-time checks when not in production
       dev: !production,
@@ -28,7 +30,8 @@ export default {
       // a separate file — better for performance
       css: css => {
         css.write("public/build/bundle.css");
-      }
+      },
+      emitCss: true
     }),
     postcss({
       extract: "public/build/global.css",
