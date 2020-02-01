@@ -15,6 +15,7 @@ import RouterLink from '../router/RouterLink.svelte';
     height: 120px;
     border-radius: 3px;
     position: relative;
+    object-fit: cover;
     bottom: 8px;
     left: 8px;
   }
@@ -48,6 +49,7 @@ import RouterLink from '../router/RouterLink.svelte';
     font-size: 15px;
     line-height: 20px;
     padding-bottom: 20px;
+    padding-top: 10px;
   }
   .resumeButton {
     background-color: var(--primary);

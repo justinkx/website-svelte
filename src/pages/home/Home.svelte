@@ -33,7 +33,7 @@
     margin-top: 40px;
   }
   .talksContainer {
-    margin-left: 8%;
+    padding-left: 8%;
     margin: 20px 0px;
   }
   .talks {
@@ -52,7 +52,7 @@
       margin-left: 20%;
     }
     .talksContainer {
-      margin-left: 20%;
+      padding-left: 20%;
     }
   }
 </style>

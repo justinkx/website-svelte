@@ -1,10 +1,12 @@
 <script>
   import router, { curRoute } from "./router/router.js";
   import { onMount } from "svelte";
+  import Slides from './pages/slides/Slides.svelte';
+
   onMount(() => {
     curRoute.set(window.location.pathname);
     if (!history.state) {
-      window.history.replaceState(
+      window.history.pushState(
         { path: window.location.pathname },
         "",
         window.location.href
@@ -13,13 +15,14 @@
   });
   function handlerBackNavigation(event) {
     curRoute.set(event.state.path);
+     window.history.pushState({path: '/'},'',window.location.href);
   }
 </script>
 
 <style>
   .fullHeight {
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
   .fullHeight::-webkit-scrollbar {
     width: 0.35em;
@@ -50,6 +53,6 @@
 
 <svelte:window on:popstate={handlerBackNavigation} />
 <main class="fullHeight">
-  <svelte:component this={router[$curRoute]} />
+  <svelte:component this={router[$curRoute] ? router[$curRoute] : Slides} />
 
 </main>
