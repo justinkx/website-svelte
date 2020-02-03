@@ -19,7 +19,7 @@
 
 <div class="slide-wrapper" {id}>
   <div class="slideContent">
-    <h1>slide {id}</h1>
+    <h1 {id}>slide {id}</h1>
 
   </div>
 </div>

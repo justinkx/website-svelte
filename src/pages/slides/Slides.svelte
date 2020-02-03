@@ -1,49 +1,58 @@
 <script>
   import Slide from "../../components/Slide.svelte";
-  let activeSlide = 1;
-  let _activeSlide = activeSlide;
-  const config = {
-  rootMargin: "10px 10px 10px 10px",
-  threshold: [0, 0.33, 0.66, 1]
-};
-  let slides = document.querySelectorAll('.slide-wrapper');
-  let observer = new IntersectionObserver(entries => {
-  entries.forEach((entry, index) => {
-    if (entry.intersectionRatio > 0.5) {
-      console.log('intersection')
-      entry.target.classList.add(entry.target.id);
-    } else {
-      entry.target.classList.remove(entry.target.id);
-      console.log('no intersection')
-    }
-  });
-}, config);
-slides.forEach(slide => {
-  console.log('slide')
-  observer.observe(slide);
-});
+  import { onMount } from "svelte";
 
-  $: if (_activeSlide !== activeSlide) {
-    if (activeSlide < slideItems.length && activeSlide !== 0) {
-      document.getElementById(activeSlide).scrollIntoView();
-      _activeSlide = activeSlide;
-    }
-  }
+  let activeSlide = 1;
+
+  
   let slideItems = [1, 2, 3, 4, 5];
   function scrollRight() {
+    console.log(activeSlide);
     if (activeSlide < slideItems.length) {
       activeSlide += 1;
-      _activeSlide += 1;
       document.getElementById(activeSlide).scrollIntoView();
     }
   }
   function scrollLeft() {
     if (activeSlide > 1) {
       activeSlide += -1;
-      _activeSlide += -1;
       document.getElementById(activeSlide).scrollIntoView();
     }
   }
+  onMount(async () => {
+    const config = {
+      treshold: 1,
+      root: document.getElementById("slidecontainer"),
+      rootMargin: "50px"
+    };
+    const cards = document.querySelectorAll(".slideContent > h1");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          console.log(activeSlide);
+          activeSlide = parseInt(entry.target.id);
+        } else {
+        }
+      });
+    }, config);
+    cards.forEach(card => {
+      observer.observe(card);
+    });
+    const variable_input = document.getElementById("variable_input");
+    variable_input.addEventListener("keyup", event => {
+      if (event.key === "Enter") {
+        if (event.target.value > slideItems.length) {
+          activeSlide = 5;
+        } else if (event.target.value < 1) {
+          activeSlide = 1;
+        } else {
+          activeSlide = event.target.value;
+        }
+        console.log(event.target.value);
+        document.getElementById(activeSlide).scrollIntoView();
+      }
+    });
+  });
 </script>
 
 <style>
@@ -88,14 +97,19 @@ slides.forEach(slide => {
     left: 0;
     right: 0;
     bottom: 0;
-    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5);
+    box-shadow: inset 0 0 20px #ffffff80;
     filter: blur(10px);
     margin: -4px;
   }
   .iconButton {
-    background: transparent;
+    background: black;
     margin-bottom: 0px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    justify-content: center;
     display: flex;
+    padding: 0px;
   }
   .slideNos {
     display: flex;
@@ -114,7 +128,8 @@ slides.forEach(slide => {
     font-weight: bold;
   }
   ion-icon {
-    font-size: 22px;
+    font-size: 26px;
+    color: white;
   }
   @media screen and (min-width: 550px) {
     .actionContainer {
@@ -133,28 +148,28 @@ slides.forEach(slide => {
   }
 </style>
 
-<div class="sliderContainer" id="slideContainer">
+<div class="sliderContainer" id="slidecontainer">
   {#each slideItems as item}
     <Slide id={item} />
   {/each}
   <div class="actionContainer">
     <button class="iconButton" on:click|preventDefault={scrollLeft}>
-      <ion-icon name="arrow-dropleft-circle" />
+      <ion-icon name="arrow-dropleft" />
 
     </button>
     <div class="slideNos">
       <input
+        id="variable_input"
         min="1"
         max={slideItems.length}
         type="number"
         bind:value={activeSlide}
-        readonly={activeSlide > slideItems.length}
         class="number" />
       :
       <input value={slideItems.length} type="number" class="number" readonly />
     </div>
     <button class="iconButton" on:click|preventDefault={scrollRight}>
-      <ion-icon name="arrow-dropright-circle" />
+      <ion-icon  name="arrow-dropright" />
 
     </button>
   </div>
