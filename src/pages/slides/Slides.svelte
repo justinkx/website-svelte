@@ -4,7 +4,6 @@
 
   let activeSlide = 1;
 
-  
   let slideItems = [1, 2, 3, 4, 5];
   function scrollRight() {
     console.log(activeSlide);
@@ -110,6 +109,7 @@
     justify-content: center;
     display: flex;
     padding: 0px;
+    cursor: pointer;
   }
   .slideNos {
     display: flex;
@@ -124,8 +124,13 @@
     border-radius: 3px;
     background: white;
     margin-bottom: 0px;
-    text-align: right;
+    text-align: center;
     font-weight: bold;
+  }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
   ion-icon {
     font-size: 26px;
@@ -153,7 +158,10 @@
     <Slide id={item} />
   {/each}
   <div class="actionContainer">
-    <button class="iconButton" on:click|preventDefault={scrollLeft}>
+    <button
+      disabled={activeSlide === 1}
+      class="iconButton"
+      on:click|preventDefault={scrollLeft}>
       <ion-icon name="arrow-dropleft" />
 
     </button>
@@ -168,8 +176,11 @@
       :
       <input value={slideItems.length} type="number" class="number" readonly />
     </div>
-    <button class="iconButton" on:click|preventDefault={scrollRight}>
-      <ion-icon  name="arrow-dropright" />
+    <button
+      disabled={activeSlide === slideItems.length}
+      class="iconButton"
+      on:click|preventDefault={scrollRight}>
+      <ion-icon name="arrow-dropright" />
 
     </button>
   </div>
