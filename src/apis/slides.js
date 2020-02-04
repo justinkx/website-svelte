@@ -1,6 +1,6 @@
 export const slides = [
     {
-        name: 'Scope Of IT',
+        name: 'IT Industry',
         icon: 'ios-people',
         desc: 'How Projects Run In IT',
         image: 'https://cdn.dribbble.com/users/103909/screenshots/3690077/sensors-03_1x.jpg',

@@ -1,19 +1,10 @@
 <script>
-  import router, { curRoute } from "../router/router.js";
 	import { fade } from 'svelte/transition';
+  import { navigate } from "svelte-routing";
 
   export let text = "Back To Home";
   function onBackClick() {
-    let HREF = window.history.state.path.substring(
-      0,
-      window.history.state.path.lastIndexOf("/")
-    );
-    if (HREF.length == 0) {
-      HREF = "/";
-    }
-
-    curRoute.set(HREF);
-    window.history.pushState({ path: HREF }, "", window.location.origin + HREF);
+    navigate("/", { replace: true });
   }
 </script>
 

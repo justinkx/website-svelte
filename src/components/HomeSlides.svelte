@@ -1,11 +1,9 @@
 <script>
-import { curRoute } from '../router/router.js';
+  import { navigate } from "svelte-routing";
 
   export let slide = {};
   function redirectTo(path){
-  curRoute.set('/slide/101');
-  
-  window.history.pushState({path: '/slide/101'}, '', window.location.origin + '/slide/101');
+    navigate(`slide/${slide.id}`,{replace: false});
 }
 </script>
 

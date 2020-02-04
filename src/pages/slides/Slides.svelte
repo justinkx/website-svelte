@@ -2,7 +2,9 @@
   import Slide from "../../components/Slide.svelte";
   import { onMount } from "svelte";
   import { slideContent } from "../../apis/slideContent";
+  import { navigate } from "svelte-routing";
 
+  export let _id;
   let activeSlide = 1;
   let _slideContent ={
     slides: []
@@ -21,9 +23,7 @@
     }
   }
   onMount(async () => {
-    const urls = window.history.state.path.split("/");
-    const slideNo = urls[urls.length - 1];
-    _slideContent = slideContent[`slide${slideNo}`];
+    _slideContent = slideContent[`slide${_id}`];
     console.log(_slideContent);
     const config = {
       treshold: 1,
@@ -36,7 +36,9 @@
         if (entry.isIntersecting) {
           console.log(activeSlide);
           activeSlide = parseInt(entry.target.id);
+          entry.target.classList.add('activeSlide');
         } else {
+          entry.target.classList.remove('activeSlide');
         }
       });
     }, config);

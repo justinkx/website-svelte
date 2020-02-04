@@ -1,28 +1,20 @@
 <script>
-  import router, { curRoute } from "./router/router.js";
   import { onMount } from "svelte";
+  import { Router, Link, Route } from "svelte-routing";
+  import Home from "./pages/home/Home.svelte";
+  import Resume from "./pages/resume/Resume.svelte";
   import Slides from './pages/slides/Slides.svelte';
-
   onMount(() => {
-    curRoute.set(window.location.pathname);
-    if (!history.state) {
-      window.history.pushState(
-        { path: window.location.pathname },
-        "",
-        window.location.href
-      );
-    }
+    
   });
-  function handlerBackNavigation(event) {
-    curRoute.set(event.state.path);
-     window.history.pushState({path: '/'},'',window.location.href);
-  }
+ 
 </script>
 
 <style>
   .mainFullHeight {
     overflow-x: hidden;
     overflow-y: auto;
+    height: 100%;
   }
   .mainFullHeight::-webkit-scrollbar {
     width: 0.35em;
@@ -42,6 +34,7 @@
   @media screen and (min-width: 550px) {
     .mainFullHeight::-webkit-scrollbar {
       width: 0.4em;
+      height: 100%;
     }
   }
   @media screen and (min-width: 950px) {
@@ -51,8 +44,15 @@
   }
 </style>
 
-<svelte:window on:popstate={handlerBackNavigation} />
+<!-- <svelte:window on:popstate={handlerBackNavigation} /> -->
 <main class="mainFullHeight">
-  <svelte:component this={router[$curRoute] ? router[$curRoute] : Slides} />
+  <!-- <svelte:component this={router[$curRoute] ? router[$curRoute] : Slides} /> -->
+  <Router>
+    <Route path="/" component={Home} />
+    <Route path="/resume" component={Resume} />
+    <Route path="/slide/:id"  let:params>
+      <Slides _id={params.id} />
+    </Route>
+  </Router>
 
 </main>
