@@ -20,39 +20,39 @@
 </script>
 
 <style>
-  .fullHeight {
+  .mainFullHeight {
     overflow-x: hidden;
     overflow-y: auto;
   }
-  .fullHeight::-webkit-scrollbar {
+  .mainFullHeight::-webkit-scrollbar {
     width: 0.35em;
   }
 
-  .fullHeight::-webkit-scrollbar-track {
+  .mainFullHeight::-webkit-scrollbar-track {
     background: #dbd4f3;
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   }
 
-  .fullHeight::-webkit-scrollbar-thumb {
+  .mainFullHeight::-webkit-scrollbar-thumb {
     background-color: var(--tertiary-tint);
     outline: 1px solid var(--tertiary-tint);
     border-radius: 4px;
   }
   @media screen and (min-width: 550px) {
-    .fullHeight::-webkit-scrollbar {
+    .mainFullHeight::-webkit-scrollbar {
       width: 0.4em;
     }
   }
   @media screen and (min-width: 950px) {
-    .fullHeight::-webkit-scrollbar {
+    .mainFullHeight::-webkit-scrollbar {
       width: 0.48em;
     }
   }
 </style>
 
 <svelte:window on:popstate={handlerBackNavigation} />
-<main class="fullHeight">
+<main class="mainFullHeight">
   <svelte:component this={router[$curRoute] ? router[$curRoute] : Slides} />
 
 </main>

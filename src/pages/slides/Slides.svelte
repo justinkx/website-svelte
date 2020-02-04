@@ -1,13 +1,15 @@
 <script>
   import Slide from "../../components/Slide.svelte";
   import { onMount } from "svelte";
+  import { slideContent } from "../../apis/slideContent";
 
   let activeSlide = 1;
-
-  let slideItems = [1, 2, 3, 4, 5];
+  let _slideContent ={
+    slides: []
+  };
   function scrollRight() {
     console.log(activeSlide);
-    if (activeSlide < slideItems.length) {
+    if (activeSlide < _slideContent.slides.length) {
       activeSlide += 1;
       document.getElementById(activeSlide).scrollIntoView();
     }
@@ -19,6 +21,10 @@
     }
   }
   onMount(async () => {
+    const urls = window.history.state.path.split("/");
+    const slideNo = urls[urls.length - 1];
+    _slideContent = slideContent[`slide${slideNo}`];
+    console.log(_slideContent);
     const config = {
       treshold: 1,
       root: document.getElementById("slidecontainer"),
@@ -40,7 +46,7 @@
     const variable_input = document.getElementById("variable_input");
     variable_input.addEventListener("keyup", event => {
       if (event.key === "Enter") {
-        if (event.target.value > slideItems.length) {
+        if (event.target.value > _slideContent.slides.length) {
           activeSlide = 5;
         } else if (event.target.value < 1) {
           activeSlide = 1;
@@ -154,8 +160,8 @@
 </style>
 
 <div class="sliderContainer" id="slidecontainer">
-  {#each slideItems as item}
-    <Slide id={item} />
+  {#each _slideContent.slides as item,index}
+    <Slide id={index+1} data={item}/>
   {/each}
   <div class="actionContainer">
     <button
@@ -169,15 +175,15 @@
       <input
         id="variable_input"
         min="1"
-        max={slideItems.length}
+        max={_slideContent.slides.length}
         type="number"
         bind:value={activeSlide}
         class="number" />
       :
-      <input value={slideItems.length} type="number" class="number" readonly />
+      <input value={_slideContent.slides.length} type="number" class="number" readonly />
     </div>
     <button
-      disabled={activeSlide === slideItems.length}
+      disabled={activeSlide === _slideContent.slides.length}
       class="iconButton"
       on:click|preventDefault={scrollRight}>
       <ion-icon name="arrow-dropright" />
