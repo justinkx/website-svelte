@@ -1,50 +1,55 @@
 <script>
   import Slide from "../../components/Slide.svelte";
-  import { onMount } from "svelte";
+  import { onMount, onDestroy } from "svelte";
   import { slideContent } from "../../apis/slideContent";
   import { navigate } from "svelte-routing";
 
   export let _id;
   let activeSlide = 1;
-  let _slideContent ={
+  let _slideContent = {
     slides: []
   };
   function scrollRight() {
-    console.log(activeSlide);
     if (activeSlide < _slideContent.slides.length) {
       activeSlide += 1;
-      document.getElementById(activeSlide).scrollIntoView();
+      document.getElementById(activeSlide).scrollIntoView({
+        behavior: "smooth",
+        inline: "center"
+      });
     }
   }
   function scrollLeft() {
     if (activeSlide > 1) {
       activeSlide += -1;
-      document.getElementById(activeSlide).scrollIntoView();
+      document.getElementById(activeSlide).scrollIntoView({
+        behavior: "smooth",
+        inline: "center"
+      });
     }
   }
   onMount(async () => {
+    document.getElementById("root").style["height"] = "auto";
     _slideContent = slideContent[`slide${_id}`];
-    console.log(_slideContent);
     const config = {
       treshold: 1,
-      root: document.getElementById("slidecontainer"),
-      rootMargin: "50px"
     };
-    const cards = document.querySelectorAll(".slideContent > h1");
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          console.log(activeSlide);
-          activeSlide = parseInt(entry.target.id);
-          entry.target.classList.add('activeSlide');
-        } else {
-          entry.target.classList.remove('activeSlide');
-        }
+    setTimeout(() => {
+      const cards = document.querySelectorAll(".slideContent > h1");
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            activeSlide = parseInt(entry.target.id);
+            entry.target.classList.add("activeSlide");
+          } else {
+            entry.target.classList.remove("activeSlide");
+          }
+        });
+      }, config);
+      cards.forEach(card => {
+        observer.observe(card);
       });
-    }, config);
-    cards.forEach(card => {
-      observer.observe(card);
-    });
+    }, 200);
+
     const variable_input = document.getElementById("variable_input");
     variable_input.addEventListener("keyup", event => {
       if (event.key === "Enter") {
@@ -55,18 +60,23 @@
         } else {
           activeSlide = event.target.value;
         }
-        console.log(event.target.value);
-        document.getElementById(activeSlide).scrollIntoView();
+        document.getElementById(activeSlide).scrollIntoView({
+        behavior: "smooth",
+        inline: "center"
+      });
       }
     });
   });
+  onDestroy(() => {
+		document.getElementById("root").style["height"] = "100%";
+	});
 </script>
 
 <style>
   .sliderContainer {
     width: 100%;
     height: 100%;
-    overflow-y: unset;
+    overflow-y: hidden;
     overflow-x: scroll;
     scroll-behavior: smooth;
     position: relative;
@@ -162,8 +172,8 @@
 </style>
 
 <div class="sliderContainer" id="slidecontainer">
-  {#each _slideContent.slides as item,index}
-    <Slide id={index+1} data={item}/>
+  {#each _slideContent.slides as item, index}
+    <Slide activeSlide={activeSlide} id={index + 1} data={item} />
   {/each}
   <div class="actionContainer">
     <button
@@ -182,7 +192,11 @@
         bind:value={activeSlide}
         class="number" />
       :
-      <input value={_slideContent.slides.length} type="number" class="number" readonly />
+      <input
+        value={_slideContent.slides.length}
+        type="number"
+        class="number"
+        readonly />
     </div>
     <button
       disabled={activeSlide === _slideContent.slides.length}

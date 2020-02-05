@@ -45,7 +45,7 @@
 </style>
 
 <!-- <svelte:window on:popstate={handlerBackNavigation} /> -->
-<main class="mainFullHeight">
+<main id="root" class="mainFullHeight">
   <!-- <svelte:component this={router[$curRoute] ? router[$curRoute] : Slides} /> -->
   <Router>
     <Route path="/" component={Home} />
