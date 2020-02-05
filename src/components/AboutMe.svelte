@@ -1,5 +1,8 @@
 <script>
-import RouterLink from '../router/RouterLink.svelte';
+  import { navigate } from "svelte-routing";
+function goToResume() {
+  navigate("/resume", { replace: false });
+}
 </script>
 
 <style>
@@ -15,6 +18,7 @@ import RouterLink from '../router/RouterLink.svelte';
     height: 120px;
     border-radius: 3px;
     position: relative;
+    object-fit: cover;
     bottom: 8px;
     left: 8px;
   }
@@ -48,17 +52,17 @@ import RouterLink from '../router/RouterLink.svelte';
     font-size: 15px;
     line-height: 20px;
     padding-bottom: 20px;
+    padding-top: 10px;
   }
   .resumeButton {
     background-color: var(--primary);
     border: none;
     border-radius: 4px;
     padding: 6px 8px;
-  }
-  .resume {
-    color: white;
+     color: white;
     font-size: 14px;
   }
+
   @media screen and (min-width: 550px) {
     .aboutTitle {
       font-size: 24px;
@@ -103,8 +107,8 @@ import RouterLink from '../router/RouterLink.svelte';
       support other open source projects. I love travelling and discovering new
       places.
     </p>
-    <button class="resumeButton">
-      <RouterLink path="/resume" name="Resume" color="white"/>
+    <button class="resumeButton" on:click={()=>goToResume()}>
+    resume
     </button>
 
   </div>

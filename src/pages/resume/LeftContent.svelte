@@ -5,7 +5,15 @@
   import Languages from "../../components/Languages.svelte";
 
   function downloadResume() {
-    fetch("https://github.com/justinkx/website-svelte/files/4137923/resume.pdf")
+    fetch(
+      "https://github.com/justinkx/website-svelte/files/4137923/resume.pdf",
+      {
+        header: new Headers({
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/pdf"
+        })
+      }
+    )
       .then(resp => resp.blob())
       .then(blob => {
         const url = window.URL.createObjectURL(blob);
@@ -146,7 +154,9 @@
     </p>
   </div>
 
-  <button on:click|once={downloadResume} class="dResume">Download Resume</button>
+  <button on:click|once={downloadResume} class="dResume">
+    Download Resume
+  </button>
 
   <h2 class="title fullWidth">Skills</h2>
   <div class="skillsContainer">
