@@ -1,0 +1,6 @@
+[[redirects]]
+  from = "/resume"
+  to = "/"
+  status = 200
+  force = false
+

@@ -5,27 +5,7 @@
   import Languages from "../../components/Languages.svelte";
 
   function downloadResume() {
-    fetch(
-      "https://github.com/justinkx/website-svelte/files/4137923/resume.pdf",
-      {
-        header: new Headers({
-          "Access-Control-Allow-Origin": "*",
-          "Content-Type": "application/pdf"
-        })
-      }
-    )
-      .then(resp => resp.blob())
-      .then(blob => {
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.style.display = "none";
-        a.href = url;
-        a.download = "resume.pdf";
-        document.body.appendChild(a);
-        a.click();
-        window.URL.revokeObjectURL(url);
-      })
-      .catch(() => alert("Unable to download.Try later!"));
+    window.location="https://github.com/justinkx/website-svelte/files/5212862/Justin.s.Resume.pdf";
   }
 </script>
 

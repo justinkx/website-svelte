@@ -113,7 +113,7 @@
   <div class="slideContent">
     <h1 class="textCenter fullWidth" {id}>{data.h1}</h1>
 
-    <img class="slideImage" src={data.image} alt={data.h1} />
+   {#if data.image} <img class="slideImage" src={data.image} alt={data.h1} />{/if}
     {#if data.p}
       <div class="pContainer">
         {#each data.p as p}

@@ -3,7 +3,7 @@ export const slideContent = {
     title: "IT Industry",
     slides: [
       {
-        h1: "What is IT",
+        h1: "1.What is IT",
         image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS-kj7yZtuEHueLhzhqw-OjnImTgUDsUAsxeK-qol1OPVdAh11k",
         p: [
@@ -12,11 +12,57 @@ export const slideContent = {
         ]
       },
       {
-        h1: "Role Of IT Industry",
+        h1: "2.Role Of IT Industry",
         image:
           "https://media-exp1.licdn.com/dms/image/C4E1BAQE3BqFBucUmqQ/company-background_10000/0?e=2159024400&v=beta&t=gxXOxmMiG4hbFtC0kegwBnh9xLacYr5Ssi83WFYRTfU",
         p: ["All industries had a mutual dependency on IT."],
         ul: ["Banking", "Insurance", "Automobile", "Manufacturing", "Telecom"]
+      },{
+        h1: "3.What is ITES??",
+        image: "https://inteliment.com/wp-content/uploads/2017/06/b-58.jpg",
+        p: [
+          "ITES is Information Technology Enable Service.",
+          "It's defined as outsourcing of processes that can be nabled with IT & covers areas like FINANCE, HR, ADMINISTRATION..."
+        ]
+      },
+      {
+        h1: "4.Reasons For Growth",
+        image: "https://bsmedia.business-standard.com/_media/bs/img/article/2017-10/22/full/1508615187-8175.jpg",
+        ul: [
+          "Abundant vailability of skilled manpower",
+          "Reduced Communication and internet cost",
+          "Reduced import duties on software & hardware products",
+          "Cost advantages",
+          "Encouraging Gov policies"
+        ]
+      },
+      {
+        h1: "5.Top Players In Indian IT Industry",
+        image: "https://tradebrains.in/wp-content/uploads/2017/11/Top-10-Companies-in-India-by-Market-Capitalization.png"
+      },
+      {
+        h1: "6.Strength Of IT Industry",
+        image: "https://industrywired.com/wp-content/uploads/2019/12/Top_3-Predictions-Shaping-IT-Industry-in-India-in-2020.jpg",
+        ul: [
+          "Highly skilled, communicative workforce",
+          "Abundant Dedicated workforce",
+          "High quality and low cost",
+          "State-of-the-art Technologie",
+          "Flexibility and Adaptability",
+          "Off-shore Development through Datacom links"
+        ]
+      },
+      {
+        h1: "7.Weakness Of IT Industry",
+        image: "https://cdn1.expresscomputer.in/wp-content/uploads/2018/12/06112143/Digitisation.jpg",
+        ul: [
+          `Recent months have seen a rise in the level of attrition rates among IT workers who are
+          quitting their jobs to pursue higher studies. Of late workers have shown a tendency not to
+          pursue IT as a full-time career.`,
+          `The cost of telecom and network infrastructure is much higher in India than in the US.`,
+          `Pinpoint Quality Concerns`,
+          `Expose Production Inefficiencies`
+        ]
       }
     ]
   },
